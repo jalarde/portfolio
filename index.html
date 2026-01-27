@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay Alarde - Project Manager Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0;
+            position: relative;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #667eea;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            min-width: 280px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9em;
+            border-bottom: 1px solid #555;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #667eea;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown > a::after {
+            content: ' ▼';
+            font-size: 0.7em;
+        }
+
+        /* Section Headers with Company Tags */
+        .company-section {
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .company-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .company-logo {
+            background-color: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .company-description {
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Sections */
+        section {
+            background-color: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        /* Professional Summary */
+        #summary {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .competencies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .competency-tag {
+            background-color: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #667eea;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            scroll-margin-top: 80px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .project-card h4 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .project-type {
+            background-color: #764ba2;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .project-meta {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .project-description {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .project-highlights {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .project-highlights strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .project-highlights ul {
+            margin-left: 20px;
+        }
+
+        .project-highlights li {
+            margin-bottom: 8px;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: #e0e7ff;
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        .project-outcome {
+            background-color: #f0fdf4;
+            border-left: 3px solid #10b981;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        .project-outcome strong {
+            color: #10b981;
+        }
+
+        .project-connection {
+            background-color: #fef3c7;
+            border-left: 3px solid #f59e0b;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        .project-connection strong {
+            color: #f59e0b;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .education-item h4 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .education-item .institution {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #667eea;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: background-color 0.3s;
+        }
+
+        #backToTop:hover {
+            background-color: #764ba2;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            .dropdown-content {
+                position: relative;
+                box-shadow: none;
+            }
+
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .project-type {
+                margin-top: 10px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .company-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Jay Alarde</h1>
+            <p>Project Manager | Strategic Initiatives & Operational Excellence</p>
+            <p style="font-size: 1em;">MBA, IT Management | McKinsey Forward Certified</p>
+            <div class="contact-info">
+                <a href="mailto:jalarde@icloud.com">📧 jalarde@icloud.com</a>
+                <a href="tel:+639524781597">📱 +63 952 478 1597</a>
+                <a href="https://linkedin.com/in/jalarde" target="_blank">💼 LinkedIn</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation with Dropdowns -->
+    <nav>
+        <ul>
+            <li><a href="#summary">Summary</a></li>
+            <li class="dropdown">
+                <a href="#featured-projects">Featured Projects</a>
+                <div class="dropdown-content">
+                    <a href="#stripe-governance">Executive Governance Framework</a>
+                    <a href="#stripe-salesforce">Enterprise Salesforce Integration</a>
+                    <a href="#stripe-regional">Cross-Regional Program Delivery</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#additional-projects">Additional Projects</a>
+                <div class="dropdown-content">
+                    <a href="#readersmagnet">Digital Transformation (ReadersMagnet)</a>
+                    <a href="#appen">AI Data Operations (Appen)</a>
+                    <a href="#mba-ai-fintech">MBA: AI in Australian Fintech</a>
+                    <a href="#mba-agentic">MBA: Agentic Commerce & AI</a>
+                </div>
+            </li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+        </ul>
+    </nav>
+
+    <!-- Professional Summary -->
+    <section id="summary">
+        <div class="container">
+            <h2>Professional Summary</h2>
+            <p>Project management professional with <strong>10+ years progressive experience and 5+ years delivering</strong> governance frameworks, operational excellence, and digital transformation in fintech, AI/ML, and publishing. Proven track record launching executive governance reducing approval cycles <strong>35%</strong> across 3 regions, managing operations of <strong>150-500 people</strong> at <strong>95% quality</strong>, and leading digital transformation sustaining <strong>$1M+ revenue</strong> during market disruption. MBA in IT Management and McKinsey Forward certified, seeking Senior PM roles to drive strategic initiatives in tech-driven organizations.</p>
+
+            <div class="competencies">
+                <span class="competency-tag">Project & Program Management</span>
+                <span class="competency-tag">PMO Governance</span>
+                <span class="competency-tag">Business Requirements Documentation</span>
+                <span class="competency-tag">Stakeholder Engagement</span>
+                <span class="competency-tag">Cross-Functional Leadership</span>
+                <span class="competency-tag">Change Management</span>
+                <span class="competency-tag">SaaS Integration Coordination</span>
+                <span class="competency-tag">GTM & Revenue Operations</span>
+                <span class="competency-tag">RAID Frameworks</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="featured-projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+
+            <!-- STRIPE PROJECTS -->
+            <div class="company-section">
+                <div class="company-header">
+                    <div class="company-logo">STRIPE</div>
+                    <div class="company-description">Global Fintech Payment Platform | Project Management in Revenue Operations | Aug 2022 – Sep 2023</div>
+                </div>
+
+                <!-- Project 1: Executive Governance -->
+                <div class="project-card" id="stripe-governance">
+                    <div class="project-header">
+                        <h4>Executive Governance Framework</h4>
+                        <span class="project-type">Stripe</span>
+                    </div>
+                    <p class="project-meta">
+                        <strong>Role:</strong> Project Coordinator (GTM), Revenue Operations | 
+                        <strong>Duration:</strong> Aug 2022 – Sep 2023
+                    </p>
+                    <p class="project-description">
+                        Launched executive governance process with Risk, Compliance, Finance, and GTM Leadership, 
+                        cutting approval cycles by 3 days (35% improvement) and improving stakeholder alignment 
+                        through structured decision-making frameworks.
+                    </p>
+                    <div class="project-highlights">
+                        <strong>Key Achievements:</strong>
+                        <ul>
+                            <li>Reduced approval cycles from 8.5 days to 5.5 days across 3 regions (Ireland, US, Singapore)</li>
+                            <li>Designed structured pre-reads, decision logs, and cross-functional review workflows</li>
+                            <li>Facilitated executive alignment across Risk, Compliance, Finance, GTM Leadership</li>
+                            <li>Standardized governance templates in Confluence for enterprise-wide adoption</li>
+                        </ul>
+                    </div>
+                    <p class="project-outcome">
+                        <strong>Impact:</strong> Faster time-to-market for strategic initiatives, improved cross-functional 
+                        transparency, scalable decision framework adopted by multiple teams
+                    </p>
+                    <div class="skills-tags">
+                        <span class="tag">PMO Governance</span>
+                        <span class="tag">Executive Stakeholder Management</span>
+                        <span class="tag">Process Design</span>
+                        <span class="tag">Decision Framework Development</span>
+                        <span class="tag">Cross-Regional Coordination</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Enterprise Salesforce Integration (UPDATED TITLE) -->
+                <div class="project-card" id="stripe-salesforce">
+                    <div class="project-header">
+                        <h4>Enterprise Salesforce Integration</h4>
+                        <span class="project-type">Stripe</span>
+                    </div>
+                    <p class="project-meta">
+                        <strong>Role:</strong> Project Coordinator (GTM), Revenue Operations | 
+                        <strong>Duration:</strong> Aug 2022 – Sep 2023
+                    </p>
+                    <p class="project-description">
+                        Partnered with Product, Engineering, and GTM Leadership across Ireland, US, and Singapore to 
+                        define Business Requirements Documentation for 3 enterprise Salesforce integration projects 
+                        (SFDC-Presto go-live, Mavenlink PSA, GTM Territory Planning), documenting functional requirements, 
+                        system dependencies, and stakeholder workflows for multi-region rollouts.
+                    </p>
+                    <div class="project-highlights">
+                        <strong>Project Scope:</strong>
+                        <ul>
+                            <li><strong>SFDC-Presto Go-Live Integration:</strong> Documented opportunity-to-go-live workflows and StripeMerchantLinkCalculationService logic</li>
+                            <li><strong>Mavenlink PSA Implementation:</strong> Coordinated managed package deployment for professional services automation</li>
+                            <li><strong>GTM Territory Planning:</strong> Defined requirements for Anaplan-SFDC integration supporting territory assignment workflows</li>
+                        </ul>
+                        <strong>Coordination Activities:</strong>
+                        <ul>
+                            <li>Partnered with Product, Engineering, Data Science teams across Ireland, US, Singapore</li>
+                            <li>Documented functional requirements, system dependencies, stakeholder workflows</li>
+                            <li>Supported UAT coordination and requirement validation</li>
+                            <li>Maintained requirements traceability in Confluence</li>
+                        </ul>
+                    </div>
+                    <div class="skills-tags">
+                        <span class="tag">Business Requirements Documentation</span>
+                        <span class="tag">Salesforce Integration</span>
+                        <span class="tag">Cross-Functional Collaboration</span>
+                        <span class="tag">Requirements Gathering</span>
+                        <span class="tag">UAT Support</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Cross-Regional Program Delivery (UPDATED TITLE) -->
+                <div class="project-card" id="stripe-regional">
+                    <div class="project-header">
+                        <h4>Cross-Regional Program Delivery</h4>
+                        <span class="project-type">Stripe</span>
+                    </div>
+                    <p class="project-meta">
+                        <strong>Role:</strong> Project Coordinator (GTM), Revenue Operations | 
+                        <strong>Duration:</strong> Aug 2022 – Sep 2023
+                    </p>
+                    <p class="project-description">
+                        Led coordination of 8 cross-regional initiatives including Anaplan-SFDC territory planning 
+                        integration and Mavenlink managed package deployment, improving on-time delivery by 10% through 
+                        dependency tracking, bi-weekly RAID reviews, and proactive risk mitigation.
+                    </p>
+                    <div class="project-highlights">
+                        <strong>Program Delivery Framework:</strong>
+                        <ul>
+                            <li>Dependency tracking across Product, Engineering, RevOps teams</li>
+                            <li>Bi-weekly RAID log reviews identifying risks, assumptions, issues, dependencies</li>
+                            <li>Proactive risk mitigation through early escalation and contingency planning</li>
+                            <li>Facilitated 12 retrospectives and postmortem reviews to identify recurring blockers</li>
+                        </ul>
+                        <strong>Outcomes:</strong>
+                        <ul>
+                            <li>10% improvement in on-time delivery for cross-regional projects</li>
+                            <li>Standardized response playbooks in Confluence reducing repeat incidents</li>
+                            <li>Improved team velocity through continuous process improvement</li>
+                            <li>Enhanced cross-functional collaboration across 3 geographic regions</li>
+                        </ul>
+                    </div>
+                    <div class="skills-tags">
+                        <span class="tag">Program Delivery</span>
+                        <span class="tag">RAID Management</span>
+                        <span class="tag">Risk Mitigation</span>
+                        <span class="tag">Dependency Tracking</span>
+                        <span class="tag">Retrospectives</span>
+                        <span class="tag">Cross-Regional Collaboration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Projects -->
+    <section id="additional-projects">
+        <div class="container">
+            <h2>Additional Projects</h2>
+
+            <!-- READERSMAGNET PROJECT -->
+            <div class="company-section">
+                <div class="company-header">
+                    <div class="company-logo">READERSMAGNET</div>
+                    <div class="company-description">Publishing & Marketing Services | Mar 2019 – Jan 2021</div>
+                </div>
+
+                <div class="project-card" id="readersmagnet">
+                    <div class="project-header">
+                        <h4>Digital Transformation Leadership</h4>
+                        <span class="project-type">ReadersMagnet</span>
+                    </div>
+                    <p class="project-meta">
+                        <strong>Role:</strong> Branding & Marketing Lead | 
+                        <strong>Duration:</strong> Mar 2019 – Jan 2021
+                    </p>
+                    <p class="project-description">
+                        Led organizational pivot from physical to virtual events in 8 weeks during COVID-19 disruption, 
+                        sustaining 85% of sales targets and maintaining $1M+ run-rate by launching 3 digital service 
+                        lines, retraining teams, and redesigning go-to-market strategy.
+                    </p>
+                    <div class="project-highlights">
+                        <strong>Transformation Scope:</strong>
+                        <ul>
+                            <li>Launched 3 digital service lines (virtual book launches, online marketing, digital distribution)</li>
+                            <li>Retrained 15-person team on virtual event platforms and digital marketing tools</li>
+                            <li>Redesigned go-to-market strategy and sales processes for remote delivery</li>
+                            <li>Maintained operational continuity with 85% target achievement during market disruption</li>
+                        </ul>
+                        <strong>Change Management:</strong>
+                        <ul>
+                            <li>Executive stakeholder alignment on strategic pivot</li>
+                            <li>Team capability development through training programs</li>
+                            <li>Process redesign for virtual service delivery</li>
+                            <li>Customer communication and expectation management</li>
+                        </ul>
+                    </div>
+                    <p class="project-outcome">
+                        <strong>Impact:</strong> Sustained $1M+ revenue during industry disruption, preserved team 
+                        employment, positioned company for post-pandemic digital operations
+                    </p>
+                    <div class="skills-tags">
+                        <span class="tag">Change Management</span>
+                        <span class="tag">Digital Transformation</span>
+                        <span class="tag">Crisis Management</span>
+                        <span class="tag">Team Leadership</span>
+                        <span class="tag">Strategic Pivot</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APPEN PROJECT -->
+            <div class="company-section">
+                <div class="company-header">
+                    <div class="company-logo">APPEN</div>
+                    <div class="company-description">AI Data & ML Services | May 2021 – Aug 2022</div>
+                </div>
+
+                <div class="project-card" id="appen">
+                    <div class="project-header">
+                        <h4>AI Data Operations Management</h4>
+                        <span class="project-type">Appen</span>
+                    </div>
+                    <p class="project-meta">
+                        <strong>Role:</strong> Project Manager (Associate), Meta Projects | 
+                        <strong>Duration:</strong> May 2021 – Aug 2022
+                    </p>
+                    <p class="project-description">
+                        Managed 150–500 AI data contributors across 3 major geo-location and search relevance projects 
+                        for Meta, maintaining 95% quality acceptance and 85% resource utilization through capacity 
+                        planning, quality monitoring, and escalation management.
+                    </p>
+                    <div class="project-highlights">
+                        <strong>Operational Excellence:</strong>
+                        <ul>
+                            <li>Capacity planning optimizing resource allocation across concurrent projects</li>
+                            <li>Quality monitoring maintaining 95% acceptance rate on Meta projects</li>
+                            <li>Escalation management resolving contributor issues and project blockers</li>
+                            <li>Led development of 2 productivity and billing dashboards reducing invoice discrepancies 8%</li>
+                        </ul>
+                        <strong>Risk Management:</strong>
+                        <ul>
+                            <li>Co-authored 6 RAID logs capturing critical dependencies</li>
+                            <li>Reduced schedule variance 5% through proactive issue identification</li>
+                            <li>Stakeholder communication and contingency planning</li>
+                            <li>Continuous process improvement through data-driven insights</li>
+                        </ul>
+                    </div>
+                    <div class="skills-tags">
+                        <span class="tag">Resource Management</span>
+                        <span class="tag">Quality Assurance</span>
+                        <span class="tag">Dashboard Development</span>
+                        <span class="tag">RAID Frameworks</span>
+                        <span class="tag">Escalation Management</span>
+                        <span class="tag">Capacity Planning</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MBA RESEARCH PROJECTS -->
+            <div class="company-section">
+                <div class="company-header">
+                    <div class="company-logo">MBA RESEARCH</div>
+                    <div class="company-description">Universal Business School Sydney | 2024-2025</div>
+                </div>
+
+                <!-- MBA Project 1: AI in Fintech -->
+                <div class="project-card" id="mba-ai-fintech">
+                    <div class="project-header">
+                        <h4>AI Adoption in Australian Fintech Startups</h4>
+                        <span class="project-type">MBA Research Project</span>
+                    </div>
+                    <p class="project-meta">
+                        <strong>Course:</strong> IT Industry Research Report | 
+                        <strong>Institution:</strong> UBSS | 
+                        <strong>Date:</strong> November 2025
+                    </p>
+                    <p class="project-description">
+                        Conducted qualitative research analyzing AI implementation challenges and opportunities for 
+                        Australian fintech startups. Examined secondary data from industry reports (AWS, ASIC, Asana) 
+                        and case studies including Commonwealth Bank's AI reversal to identify adoption barriers and 
+                        success factors. Research revealed critical gap: 76% of Australian firms use AI in financial 
+                        operations but only 14% successfully scale, highlighting execution challenges beyond initial adoption.
+                    </p>
+                    <div class="project-highlights">
+                        <strong>Key Findings:</strong>
+                        <ul>
+                            <li>Identified 39% skills shortage and 65% capital access constraints as primary barriers</li>
+                            <li>Analyzed CBA case study demonstrating governance and monitoring gaps in AI deployment</li>
+                            <li>Developed actionable frameworks: phased implementation, governance mechanisms, workforce capability prioritization</li>
+                            <li>Applied Technology Adoption Models (TAM, TOE) to startup-specific contexts</li>
+                        </ul>
+                    </div>
+                    <div class="skills-tags">
+                        <span class="tag">Qualitative Research</span>
+                        <span class="tag">Thematic Analysis</span>
+                        <span class="tag">IT Governance</span>
+                        <span class="tag">Risk Management</span>
+                        <span class="tag">Technology Adoption Frameworks</span>
+                        <span class="tag">Change Management</span>
+                    </div>
+                    <p class="project-outcome">
+                        <strong>Outcome:</strong> Delivered research report with IT management recommendations for 
+                        balancing AI innovation against operational stability, emphasizing continuous monitoring, 
+                        human oversight, and 3-5 year implementation timelines for sustainable adoption.
+                    </p>
+                </div>
+
+                <!-- MBA Project 2: Agentic Commerce -->
+                <div class="project-card" id="mba-agentic">
+                    <div class="project-header">
+                        <h4>Agentic Commerce & AI Transformation in Financial Services</h4>
+                        <span class="project-type">MBA Case Study</span>
+                    </div>
+                    <p class="project-meta">
+                        <strong>Course:</strong> Information Systems Strategy | 
+                        <strong>Institution:</strong> UBSS | 
+                        <strong>Date:</strong> November 2025
+                    </p>
+                    <p class="project-description">
+                        Case study analysis examining Stripe-PwC collaboration on Agentic Commerce Protocol (ACP) 
+                        implementation and its impact on financial services digital transformation. Analyzed methodology, 
+                        business outcomes, and enterprise adoption challenges for autonomous AI agents executing complex 
+                        transactions. Evaluated implementation through Information Systems Strategy frameworks and 
+                        organizational change management principles.
+                    </p>
+                    <div class="project-highlights">
+                        <strong>Measurable Outcomes Analyzed:</strong>
+                        <ul>
+                            <li>20-30% faster workflow cycles through continuous AI agent operation</li>
+                            <li>40% reduction in customer claim handling time; 25-40% employee time reclaimed from repetitive tasks</li>
+                            <li>60% fewer financial risk events through real-time fraud detection</li>
+                            <li>Fraud detection accuracy improved from 59% to 97% for card-testing attacks</li>
+                        </ul>
+                    </div>
+                    <div class="skills-tags">
+                        <span class="tag">Case Study Analysis</span>
+                        <span class="tag">Digital Transformation</span>
+                        <span class="tag">Business Process Optimization</span>
+                        <span class="tag">AI Governance</span>
+                        <span class="tag">Enterprise Architecture</span>
+                        <span class="tag">Strategic Planning</span>
+                    </div>
+                    <p class="project-outcome">
+                        <strong>Recommendations:</strong> Developed enterprise adoption strategy treating agentic commerce 
+                        as Business Management System transformation requiring: board-level sponsorship, cross-functional 
+                        coordination (marketing, finance, operations, IT), 40-50% budget allocation to organizational 
+                        change vs. technical implementation, and federated governance frameworks for algorithmic accountability.
+                    </p>
+                    <p class="project-connection">
+                        <strong>Professional Application:</strong> Research directly informed understanding of Stripe's 
+                        GTM Systems and payment infrastructure coordination during professional tenure (Aug 2022 - Sep 2023).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <h2>Education & Certifications</h2>
+
+            <div class="education-item">
+                <h4>MBA in IT Management</h4>
+                <p class="institution">Universal Business School Sydney (UBSS) | Sep 2023 – Dec 2025</p>
+                <p><em>Focus: Project Management, IT Strategy, Digital Transformation, Business Analysis</em></p>
+            </div>
+
+            <div class="education-item">
+                <h4>Graduate Certificate in Business Administration</h4>
+                <p class="institution">Kaplan Business School | Sydney, Australia | Jun 2024</p>
+                <p><em>Focus: Project Risk & Governance, Finance & Monitoring, Leadership Development</em></p>
+            </div>
+
+            <div class="education-item">
+                <h4>McKinsey Forward Program</h4>
+                <p class="institution">McKinsey & Company | 2024</p>
+                <p><em>Focus: Problem Solving, Communication, Strategic Thinking, Digital Excellence</em></p>
+            </div>
+
+            <div class="education-item">
+                <h4>Bachelor of Arts in Liberal Arts and Commerce</h4>
+                <p class="institution">University of San Jose-Recoletos | Cebu, Philippines</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills & Tools</h2>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Project Management</h4>
+                    <p>Asana, Jira, Confluence, Trello</p>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Documentation</h4>
+                    <p>Confluence, Google Workspace, MS Office, Notion</p>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Collaboration</h4>
+                    <p>Slack, MS Teams, Zoom</p>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Data & Reporting</h4>
+                    <p>Google Sheets, Excel (dashboards, pivot tables)</p>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Methodologies</h4>
+                    <p>Agile, Waterfall, RAID Frameworks, Retrospectives</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button onclick="topFunction()" id="backToTop" title="Go to top">↑</button>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jay Alarde. All rights reserved.</p>
+            <p style="margin-top: 10px;">📍 Makati City, Philippines | 📧 jalarde@icloud.com | 📱 +63 952 478 1597</p>
+            <p style="margin-top: 10px;">
+                <a href="https://linkedin.com/in/jalarde" target="_blank" style="color: white;">LinkedIn</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">Last updated: January 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // Back to top button functionality
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                document.getElementById("backToTop").style.display = "block";
+            } else {
+                document.getElementById("backToTop").style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
